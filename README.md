@@ -1,2 +1,422 @@
 # SSFL25-2-1
 Genome assembly of Pyricularia oryzae  stain SSFL25-2-1
+# PR0069
+Genome assembly of Pyricularia oryzae (stain PR0069)
+# MyGenome - PR0069
+**Repository URL:** https://github.com/Sai/PR0069
+
+This repository consists bash piplines for genome sequencing cleanup, assembly, and annotation (from raw reads to an assembly, BLAST-queried genome).
+
+---
+
+## Table of Contents
+1. [Sequence Data, Quality Assessment and Trimming](#sequence-data-quality-assessment-and-trimming)
+2. [Genome Assembly](#genome-assembly)
+3. [BLAST](#Blast)
+
+---
+
+## Sequence Data, Quality Assessment and Trimming
+
+### Download Sequence Data
+
+1. Connect to the remote server and copy raw sequencing reads to your working directory:
+
+```
+ scp -r ngs@10.163.188.11:Desktop/PR0069 ske300/unix/sequence/PR006
+```
+---
+
+### Assess Sequence Quality through fastqc (Before Trimming)
+
+1. Run FastQC on the raw reads:
+
+```
+ fastqc ske300/unix/sequence/PR006/PR0069_1.fq.gz ske300/unix/sequence/PR0069/PR0069_2.fq.gz -o ~/sequence
+```
+
+2. View the r1 raw read report by transfering from VM to local remote served and open the generated HTML file in a browser:
+
+```
+scp -r ske300@ske300.cs.uky.edu:~/sequences/PR0069/PR0069_1_fastqc.html .
+```
+
+3.View the r2 raw read report by transfering from VM to local remote served and open the generated HTML file in a browser:
+
+```
+scp -r ske300@ske300.cs.uky.edu:~/sequences/PR0069/PR0069_2_fastqc.html .
+```
+
+
+#### FastQC Summary (Before Trimming)
+
+| Module | Status |
+|---|---|
+| Basic Statistics | GOOD |
+| Per base sequence quality | GOOD |
+| Per tile sequence quality | WARN |
+| Per sequence quality scores | GOOD |
+| Per base sequence content | GOOD |
+| Per sequence GC content | WARNING |
+| Per base N content | GOOD |
+| Sequence Length Distribution | WARNING |
+| Sequence Duplication Levels | GOOD |
+| Overrepresented sequences | GOOD |
+| Adapter Content | FAILED |
+
+> **Warnings:** Per tile sequence quality, Per sequence GC content and Sequence Length Distribution — adapters must be removed for further assembly analysis. 
+
+##  PR0069.1 FastQC Summary (Before Trimming) 
+![Summary](IMAGES/Basic_Statistics_PR0069.png)
+![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.1.png)
+![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
+![Per Sequence Quality Scores](IMAGES/Per_sequence_quality_scores_PR0069.png)
+![Per Base N Content](IMAGES/Per_base_N_content_PR0069.1.png)
+![Sequence Length Distribution](IMAGES/Sequence_length_distribution_PR0069.1.png)
+![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_PR0069.1.png)
+
+## Adapter Content (Before Trimming)
+
+![Adapter Content](IMAGES/Adapter_content_PR0069.1.png)
+
+##  PR0069.2 FastQC Summary (Before Trimming)
+![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
+![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.2.png)
+![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
+![Per Sequence Quality Scores](IMAGES/Per_sequecne_quality_scores_PR0069.2.png)
+![Per Base N Content](IMAGES/Per_base_N_content_PR0069.2.png)
+![Sequence Length Distribution](IMAGES/Sequence_Length_Dsitribution_PR0069.2.png)
+![Sequence Duplication Levels](IMAGES/Sequence_Duplication_Levels_PR0069.2.png)
+
+## Adapter Content (Before Trimming)
+
+![Adapter Content](IMAGES/Adaptor_content_PR0069.2.png)   
+
+---
+
+### Trim the raw reads (R1 and R2) 
+1. Edit the list of the adaptor sequences file by adding 20 G to the file:
+   
+ ```
+ nano ske300/unix/sequence/adaptors.fa
+ ```
+
+2. Run Trimmomatic to remove adapters and low-quality bases on both paired and unpaired raw reads:
+
+```
+ java -jar sequences/trimmomatic-0.38.jar PE -threads 2 -phred33 -trimlog Br80_errorlog.txt ske300/unix/sequence/PR006/PR0069_1.fq.gz ske300/unix/sequence/PR0069/PR0069_2.fq.gz PR0069_1_paired.fastq PR0069_1_unpaired.fastq PR0069_2_paired.fastq PR0069_2_unpaired.fastq ILLUMINACLIP:ske300/unix/sequence/PR0069/adaptors.fa:2:30:10 SLIDINGWINDOW:20:20 MINLEN:125
+```
+
+2. Re-run FastQC on trimmed paired and unpaired reads to confirm improvement:
+
+```
+ fastqc  PR0069_1_paired.fastq PR0069_2_paired.fastq  PR0069_1_unpaired.fastq  PR0069_2_unpaired.fastq
+```
+
+#### FastQC Summary  of PR0069_1_paired.fastq read (After Trimming)
+
+| Module | Status |
+|---|---|
+| Basic Statistics | PASS |
+| Per base sequence quality | PASS |
+| Per tile sequence quality | WARNING |
+| Per sequence quality scores | PASS |
+| Per base sequence content | PASS |
+| Per sequence GC content | WARN |
+| Per base N content | PASS |
+| Sequence Length Distribution | WARNING |
+| Sequence Duplication Levels | PASS |
+| Overrepresented sequences | PASS |
+| Adapter Content | PASS |
+
+> **After trimming:** Adapter content warning was resolved. All critical modules now pass.
+
+##  PR0069.1_paired.fastq FastQC Summary (After Trimming)
+![Summary](IMAGES/Basic_Statistics_Paired_PR0069.1.png)
+![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_Paired_PR0069.1.png)
+![Per Tile Sequence Quality](IMAGES/Pertile_sequence_quality_paired_PR0069.1.png)
+![Per Sequence Quality Scores](IMAGES/Per_base_sequence_quality_Paired_PR0069.1png..png)
+![Per Base N Content](IMAGES/Per_base_N_content_paired_PR0069.1.png)
+![Sequence Length Distribution](IMAGES/Sequence_length_distribution_paired_PR0069.1.png)
+![Sequence Duplication Levels](IMAGES/Sequence_Duplication_levels_paired_PR0069.1.png)
+
+## Adapter Content (Before Trimming)
+
+![Adapter Content](IMAGES/Adapter_content_Paired_PR0069.png) 
+
+
+#### FastQC Summary  of PR0069_1_unpaired.fastq read (After Trimming)
+
+| Module | Status |
+|---|---|
+| Basic Statistics | PASS |
+| Per base sequence quality | PASS |
+| Per tile sequence quality | FAILED |
+| Per sequence quality scores | PASS |
+| Per base sequence content | PASS |
+| Per sequence GC content | WARN |
+| Per base N content | PASS |
+| Sequence Length Distribution | WARNING |
+| Sequence Duplication Levels | PASS |
+| Overrepresented sequences | PASS |
+| Adapter Content | PASS |
+
+> **After trimming:** Adapter content warning was resolved. All critical modules now pass.
+
+**FastQC Summary Tab OF PR0069_1_unpaired.fastq  (After Trimming):**
+
+##  PR0069.1_unpaired.fastq FastQC Summary (Before Trimming)
+![Summary](IMAGES/Basic_Statistics_Unpaired_PR0069.1.png)
+![Per Base Sequence Quality](IMAGES/Per_base_sequence_quality_unpaired_PR0069.1.png)
+![Per Tile Sequence Quality](IMAGES/per_tile_sequence_quality_unpaired_PR0069.1.png)
+![Per Sequence Quality Scores](IMAGES/Per_sequence_quality_unpaired_PR0069.1.png)
+![Per Base N Content](IMAGES/Per_base_N_content_Unpaired_PR0069.png)
+![Sequence Length Distribution](IMAGES/Sequence_length_distribution_unpaired_PR0069.png)
+![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_unpaired_PR0069.png)
+
+## Adapter Content (Before Trimming)
+
+![Adapter Content](IMAGES/ADAPTER_CONTENT_PR0069_2_UNPAIRED.png) 
+
+#### FastQC Summary  of PR0069_2_paired.fastq read (After Trimming)
+
+| Module | Status |
+|---|---|
+| Basic Statistics | PASS |
+| Per base sequence quality | PASS |
+| Per tile sequence quality | WARNING |
+| Per sequence quality scores | PASS |
+| Per base sequence content | PASS |
+| Per sequence GC content | WARN |
+| Per base N content | PASS |
+| Sequence Length Distribution | WARNING |
+| Sequence Duplication Levels | PASS |
+| Overrepresented sequences | PASS |
+| Adapter Content | WARNING |
+
+> **After trimming:** Adapter content warning was resolved. All critical modules now pass.
+
+**FastQC Summary Tab OF PR0069_2_paired.fastq  (After Trimming):**
+
+![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
+![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_PAIRED.png)
+![Per Tile Sequence Quality](IMAGES/PER_TILE_SEQUENCE_QUALITY_PR0069_2_PAIRED.png)
+![Per Sequence Quality Scores](IMAGES/PER_BASE_SEQUENCE_QUALITY_PR0069_2_PAIRED.png)
+![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_PAIRED.png)
+![Per Sequence GC Content](IMAGES/PER_BASE_N_CONTENT_PR0069_2_PAIRED.png)
+![Sequence Length Distribution](IMAGES/SEQUENCE_LENGTH_DISTRIBUTION_PR0069_2_PAIRED.png)
+![Sequence Duplication Levels](IMAGES/SEQUENCEDUPLICATION_LEVELS_PR0069_2_PAIRED.png)
+
+**FastQC Adapter Content Tab (After Trimming):**
+
+![adapter_after.png](IMAGES/ADAPTER_CONTENT_PR0069_2_PAIRED.png)
+
+
+
+#### FastQC Summary  of PR0069_2_unpaired.fastq read (After Trimming)
+
+| Module | Status |
+|---|---|
+| Basic Statistics | PASS |
+| Per base sequence quality | PASS |
+| Per tile sequence quality | WARNING |
+| Per sequence quality scores | PASS |
+| Per base sequence content | PASS |
+| Per sequence GC content | WARN |
+| Per base N content | PASS |
+| Sequence Length Distribution | WARNING |
+| Sequence Duplication Levels | PASS |
+| Overrepresented sequences | PASS |
+| Adapter Content | WARNING |
+
+> **After trimming:** Adapter content warning was resolved. All critical modules now pass.
+
+**FastQC Summary Tab OF PR0069_2_umpaired.fastq  (After Trimming):**
+
+![Summary](IMAGES/BASICS STATSTICS_PR0069_2_UNPAIRED.png)
+![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_UNPAIRED.png)
+![Per Tile Sequence Quality](IMAGES/PER_TILE_SEQUENCE_QUALITY_PR0069_2_UNPAIRED.png)
+![Per Sequence Quality Scores](IMAGES/PER_SEQUENCE_QUALITY_SCORES_PR0069_2_UNPAIRED.png)
+![Per Sequence GC Content](IMAGES/PER_SEQUENCE_GC_CONTENT_PR0069_2_UNPAIRED.png)
+![Per Base N Content](IMAGES/PER_BASE_N_CONTENT_PR0069_2_UNPAIRED.png)
+![Sequence Length Distribution](IMAGES/SEQUENCE_LENGTH_DISTRIBUTION_PR0069_2_UNPAIRED.png)
+![Sequence Duplication Levels](IMAGES/SEQUENCE_DUPLICATION_LEVELS_PR0069_2_UNPAIRED.png)
+
+**FastQC Adapter Content Tab (After Trimming):**
+
+![adapter_after.png](IMAGES/ADAPTER_CONTENT_PR0069_2_UNPAIRED.png)
+
+
+---
+
+## Genome Assembly
+
+### Transfer Data to MCC
+
+1. Transfer trimmed paired and unpaired reads to the MCC cluster:
+
+```
+ scp PR0069_1_paired.fastq PR0069_2_paired.fastq  PR0069_1_unpaired.fastq PR0069_2_unpaired.fastq ske300@mcc.uky.edu:/project/farman_s26abt480/ske300/
+```
+
+2. Run velvet for genome assembly using a range of K-mer values at 10fold with obtained reference from k-mer adviosory:
+
+```
+ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 13 43 10
+```
+
+```
+ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 41 80 10
+```
+
+```
+ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 23 53 10
+```
+
+```
+sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 51 80 10
+```
+
+3. Re-run velvet using a range of K-mer values at 2 fold:
+
+```
+sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 40 120 2
+```
+
+```
+sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 51 80 2
+```
+---
+
+### Run Genome Assemblies
+
+#### SPAdes Assembly
+
+1. Submit SPAdes job to the cluster:
+
+```
+sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farman_s26abt480/ske300/PR0069  PR0069
+```
+
+#### Genome scaffolds fasta cleanup
+
+1.changing scaffolds fasta heading:
+
+ ```
+ cp farman_s26abt480/SCRIPTs/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl
+```
+
+```
+perl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/PR0069/PR0069_spades_pairedassembly/scaffolds.fasta  
+```
+
+2. Genome processing:
+   
+```
+ cp /project/farman_s26abt480/SLURM_SCRIPTs/GenomePostProcess.sh /project/farman_s26abt480/ske300/PR0069/GenomePostProcess.sh
+``` 
+
+```
+ sbatch BuscoSingularity.sh /project/farman_s26abt480/ske300/PR0069/PR0069_final.fasta
+```
+
+---
+
+#### Assembly Metrics Summary
+
+| Metric | Velvet- step 10 (k=31) | Velvet- step 2 |SPAdes | SPAdes (paired)|
+|---|---|---|---|
+| # Genome size| 43031414 | 43045664 | 45561195 | 44641790 |
+|  contig (bp) | 18522 | 18629 | 23561 | 22803 |
+| N50 | 17569 | 17723 | 42969 | 39937 |
+
+
+> **Optimal assembly:** SPAdes genome assembly analysis provided highest number of N50 contig. 
+
+<details>
+<summary>Why SPAdes was chosen</summary>
+
+Hiher N50 contigs are expected to havr higher genome assmebly sequencing coverage:
+
+- The highest N50 of 42969 bp
+- Total length closest to the expected genome size
+
+Velvet with ten and two fold provided lesser N50 contigs.
+
+</details>
+
+---
+
+
+### Bandage Visualization of Optimal Assembly
+
+**Bandage graph of optimal SPAdes assembly:**
+
+![bandage_assembly.png](PR0069graph.png)
+
+> The Bandage image shows the assembly graph optiained from the spades analysis. Most contigs form clean linear paths indicating minimal ambiguity. A small number of branching nodes correspond to repetitive genomic regions.
+
+---
+### Blast
+
+1. Transferring query mitochondrial reference sequence from another directory:
+
+```
+ cp /project/farman_s26abt480/RESOURCES/MoMitochondrion.fasta /project/farman_s26abt480/ske300/PR0069/MoMitochondrion.fasta
+```
+
+ 
+2. Blast the genome assembly against Mitochondrial subject
+
+```
+ singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query MoMitochondrion.fasta -subject PR0069_final.fasta -evalue 1e-50 -max_target_seqs 2000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitocondrion.PR0069.BLAST
+```
+
+#### Query 3: Identify and Export Mitochondrial Contigs of the PR0069 strain
+
+3. Creating 90% BLAST hit sequence into a csv file :
+
+```
+awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.PR0069.BLAST > MyPR0069.csv
+```
+
+2. Mitochontrial hits with contigs copied into CSV:
+
+```
+ cp MoMitocondrion.PR0069.BLAST MyPR0069.csv
+```
+
+---
+
+
+### BLAST Findings Summary
+
+> **Mitochondrial contigs:** BLAST against reference mitochondrial sequences identified X contigs as mitochondrial in origin based on high-identity, low e-value hits.
+
+<details>
+<summary>Interpreting BLAST output format 6 columns</summary>
+
+`-outfmt 6` produces tabular output with the following columns:
+
+| Column | Field | Description |
+|--------|-------|-------------|
+| 1 | qseqid | Query sequence ID |
+| 2 | sseqid | Subject (hit) sequence ID |
+| 3 | slen | Subject sequence length |
+| 4 | length | Alignment length |
+| 5 | qstart | Query start position |
+| 6 | qend | Query end position |
+| 7 | sstart | Subject start position |
+| 8 | send | Subject end position |
+| 9 | btop |  BLAST top hits |
+
+</details>
+
+---
+
+### Output Files
+
+- [mito_contigs.csv](MyPR0069.csv) — CSV list of mitochondrial contigs for NCBI upload
+
+---
+
