@@ -19,7 +19,7 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
 9. [ Visualize Genes in Genome Browser](#Visualize Genes in Genome Browser)
 ---
 
-## Sequence Data, Quality Assessment and Trimming
+## Download Datasets from the Farman Lab Mac
 
 ### Download Sequence Data
 
