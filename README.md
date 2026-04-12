@@ -282,10 +282,10 @@ sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farma
 ```
 #### Assembly Metrics Summary
 
-| Metric | Velvet- step 10 (k=31) | Velvet- step 2 |SPAdes | SPAdes (paired)|
+| Metric | Velvet-step10 (k=31) | Velvet-step2 |SPAdes | SPAdes (paired)|
 |---|---|---|---|
-| # Genome size| 43031414 | 43045664 | 45561195 | 44641790 |
-|  contig (bp) | 18522 | 18629 | 23561 | 22803 |
+| Genome size| 43031414 | 43045664 | 45561195 | 44641790 |
+| contig (bp) | 18522 | 18629 | 23561 | 22803 |
 | N50 | 17569 | 17723 | 42969 | 39937 |
 
 ---
