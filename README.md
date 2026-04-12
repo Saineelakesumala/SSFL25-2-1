@@ -8,15 +8,15 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
 ---
 
 ## Table of Contents
-1. [Download Datasets from the Farman Lab Mac](#Download Datasets from the Farman Lab Mac)
-2. [Assess Sequence Quality with FASTQC](#Assess Sequence Quality with FASTQC)
-3. [Trim Adaptors and Poor Quality Sequence with Trimmomatic](#Trim Adaptors and Poor Quality Sequence with Trimmomatic)
-4. [. Generate an Optimized MyGenome Assembly using Velvet and SPAdes](#Generate an Optimized MyGenome Assembly using Velvet and SPAdes)
-5. [Perform Genome Post Processing for NCBI Submission](#Perform Genome Post Processing for NCBI Submission)
-6. [Assess Genome Quality using BUSCO](#Assess Genome Quality using BUSCO)
-7. [Genome Interrogation using BLAST](# Genome Interrogation using BLAST)
-8. [Perform Gene Predictions](#Perform Gene Predictions)
-9. [ Visualize Genes in Genome Browser](#Visualize Genes in Genome Browser)
+1. [Download Datasets from the Farman Lab Mac](#Download-Datasets-from-the-Farman-Lab-Mac)
+2. [Assess Sequence Quality with FASTQC](#Assess-Sequence-Quality-with-FASTQC)
+3. [Trim Adaptors and Poor Quality Sequence with Trimmomatic](#Trim-Adaptors-and-Poor-Quality-Sequence-with-Trimmomatic)
+4. [. Generate an Optimized MyGenome Assembly using Velvet and SPAdes](#Generate-an-Optimized-MyGenome-Assembly-using-Velvet-and-SPAdes)
+5. [Perform Genome Post Processing for NCBI Submission](#Perform-Genome-Post-Processing-for-NCBI-Submission)
+6. [Assess Genome Quality using BUSCO](#Assess-Genome-Quality-using-BUSCO)
+7. [Genome Interrogation using BLAST](#Genome-Interrogation-using-BLAST)
+8. [Perform Gene Predictions](#Perform-Gene-Predictions)
+9. [ Visualize Genes in Genome Browser](#Visualize-Genes-in-Genome-Browser)
 ---
 
 ## Download Datasets from the Farman Lab Mac
