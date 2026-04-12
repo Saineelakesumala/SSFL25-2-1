@@ -1,19 +1,22 @@
 # SSFL25-2-1
 Genome assembly of Pyricularia oryzae  stain SSFL25-2-1
-# PR0069
-Genome assembly of Pyricularia oryzae (stain PR0069)
-# MyGenome - PR0069
-**Repository URL:** https://github.com/Sai/PR0069
+# MyGenome - SSFL25-2-1
+**Repository URL:** https://github.com/Sai Neela Kesumala/SSFL25-2-1
 
 This repository consists bash piplines for genome sequencing cleanup, assembly, and annotation (from raw reads to an assembly, BLAST-queried genome).
 
 ---
 
 ## Table of Contents
-1. [Sequence Data, Quality Assessment and Trimming](#sequence-data-quality-assessment-and-trimming)
-2. [Genome Assembly](#genome-assembly)
-3. [BLAST](#Blast)
-
+1. [Download Datasets from the Farman Lab Mac](#Download Datasets from the Farman Lab Mac)
+2. [Assess Sequence Quality with FASTQC](#Assess Sequence Quality with FASTQC)
+3. [Trim Adaptors and Poor Quality Sequence with Trimmomatic](#Trim Adaptors and Poor Quality Sequence with Trimmomatic)
+4. [. Generate an Optimized MyGenome Assembly using Velvet and SPAdes](#Generate an Optimized MyGenome Assembly using Velvet and SPAdes)
+5. [Perform Genome Post Processing for NCBI Submission](#Perform Genome Post Processing for NCBI Submission)
+6. [Assess Genome Quality using BUSCO](#Assess Genome Quality using BUSCO)
+7. [Genome Interrogation using BLAST](# Genome Interrogation using BLAST)
+8. [Perform Gene Predictions](#Perform Gene Predictions)
+9. [ Visualize Genes in Genome Browser](#Visualize Genes in Genome Browser)
 ---
 
 ## Sequence Data, Quality Assessment and Trimming
