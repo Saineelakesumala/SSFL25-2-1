@@ -1,3 +1,4 @@
+
 # SSFL25-2-1
 Genome assembly of Pyricularia oryzae  stain SSFL25-2-1
 # MyGenome - SSFL25-2-1
@@ -18,6 +19,8 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
 8. [Perform Gene Predictions](#Perform-Gene-Predictions)
 9. [Visualize Genes in Genome Browser](#Visualize-Genes-in-Genome-Browser)
 ---
+<details>
+<summary> Download Datasets </summary>  
 
 ## Download Datasets from the Farman Lab Mac
 
@@ -28,6 +31,9 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
  scp -r ngs@10.163.188.11:Desktop/PR0069 ske300/unix/sequence/SSFL25-2-1
 ```
 ---
+
+<details>
+<summary> Assess Sequence Quality  </summary>  
 
 ## Assess Sequence Quality with FASTQC
 
@@ -108,6 +114,9 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 ---
 
+<details>
+<summary> Trim Adaptors </summary>
+ 
 ## Trim Adaptors and Poor Quality Sequence with Trimmomatic
 1. Edit the list of the adaptor sequences file by adding 20 G to the file:
    
@@ -249,6 +258,9 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 ---
 
+<details>
+<summary> Optimized PR0069 Assembly </summary>
+ 
 ## Generate an Optimized PR0069 Assembly using Velvet and SPAdes
 
 ### Optimized MyGenome Assembly using Velvet 
@@ -288,6 +300,9 @@ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farma
 ```
 ---
 
+<details>
+<summary> Optimized PR0069 Assembly SPAdes </summary>
+ 
 ### Optimized MyGenome Assembly using SPAdes
 
 
@@ -306,6 +321,10 @@ sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farma
 | N50 | 17569 | 17723 | 42969 | 39937 |
 
 ---
+
+<details>
+<summary> Genome Post Processing </summary>
+ 
 ## Perform Genome Post Processing for NCBI Submission
 1.changing scaffolds fasta heading:
 
@@ -344,7 +363,9 @@ Velvet with ten and two fold provided lesser N50 contigs.
 
 ---
 
-
+<details>
+<summary> Bandage Visualization  </summary>
+ 
 ### Bandage Visualization of Optimal Assembly
 
 **Bandage graph of optimal SPAdes assembly:**
@@ -354,6 +375,10 @@ Velvet with ten and two fold provided lesser N50 contigs.
 > The Bandage image shows the assembly graph optiained from the spades analysis. Most contigs form clean linear paths indicating minimal ambiguity. A small number of branching nodes correspond to repetitive genomic regions.
 
 ---
+
+<details>
+<summary> BLAST </summary>
+ 
 ## Genome Interrogation using BLAST
 
 1. Transferring query mitochondrial reference sequence from another directory:
@@ -384,7 +409,9 @@ awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.PR0069.BLAST > MyPR
 
 ---
 
-
+<details>
+<summary> BLAST summary </summary>
+ 
 ### BLAST Findings Summary
 
 > **Mitochondrial contigs:** BLAST against reference mitochondrial sequences identified X contigs as mitochondrial in origin based on high-identity, low e-value hits.
