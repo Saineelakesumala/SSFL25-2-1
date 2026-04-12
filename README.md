@@ -16,7 +16,7 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
 6. [Assess Genome Quality using BUSCO](#Assess-Genome-Quality-using-BUSCO)
 7. [Genome Interrogation using BLAST](#Genome-Interrogation-using-BLAST)
 8. [Perform Gene Predictions](#Perform-Gene-Predictions)
-9. [ Visualize Genes in Genome Browser](#Visualize-Genes-in-Genome-Browser)
+9. [Visualize Genes in Genome Browser](#Visualize-Genes-in-Genome-Browser)
 ---
 
 ## Download Datasets from the Farman Lab Mac
@@ -197,7 +197,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 | Module | Status |
 |---|---|
-|Basic-Statistics| PASS |
+|Basic Statistics| PASS |
 | Per base sequence quality | PASS |
 | Per tile sequence quality | WARNING |
 | Per sequence quality scores | PASS |
@@ -245,8 +245,8 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 ---
 
-## Generate an Optimized MyGenome Assembly using Velvet and SPAdes
-### Transfer Data to MCC
+## Generate an Optimized PR0069 Assembly using Velvet and SPAdes
+### Optimized MyGenome Assembly using Velvet 
 
 1. Transfer trimmed paired and unpaired reads to the MCC cluster:
 
@@ -283,9 +283,8 @@ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farma
 ```
 ---
 
-### Run Genome Assemblies
+### Optimized MyGenome Assembly using SPAdes
 
-#### SPAdes Assembly
 
 1. Submit SPAdes job to the cluster:
 
@@ -293,8 +292,7 @@ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farma
 sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farman_s26abt480/ske300/PR0069  PR0069
 ```
 
-#### Genome scaffolds fasta cleanup
-
+## Perform Genome Post Processing for NCBI Submission
 1.changing scaffolds fasta heading:
 
  ```
@@ -305,8 +303,6 @@ sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farma
 perl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/PR0069/PR0069_spades_pairedassembly/scaffolds.fasta  
 ```
 
-2. Genome processing:
-   
 ```
  cp /project/farman_s26abt480/SLURM_SCRIPTs/GenomePostProcess.sh /project/farman_s26abt480/ske300/PR0069/GenomePostProcess.sh
 ``` 
@@ -352,7 +348,7 @@ Velvet with ten and two fold provided lesser N50 contigs.
 > The Bandage image shows the assembly graph optiained from the spades analysis. Most contigs form clean linear paths indicating minimal ambiguity. A small number of branching nodes correspond to repetitive genomic regions.
 
 ---
-### Blast
+## Genome Interrogation using BLAST
 
 1. Transferring query mitochondrial reference sequence from another directory:
 
@@ -367,7 +363,6 @@ Velvet with ten and two fold provided lesser N50 contigs.
  singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query MoMitochondrion.fasta -subject PR0069_final.fasta -evalue 1e-50 -max_target_seqs 2000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitocondrion.PR0069.BLAST
 ```
 
-#### Query 3: Identify and Export Mitochondrial Contigs of the PR0069 strain
 
 3. Creating 90% BLAST hit sequence into a csv file :
 
