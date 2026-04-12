@@ -301,6 +301,14 @@ sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farma
 | contig (bp) | 18522 | 18629 | 23561 | 22803 |
 | N50 | 17569 | 17723 | 42969 | 39937 |
 
+> **Optimal assembly:** SPAdes genome assembly analysis provided highest number of N50 contig. 
+Hiher N50 contigs are expected to havr higher genome assmebly sequencing coverage:
+
+- The highest N50 of 42969 bp
+- Total length closest to the expected genome size
+
+Velvet with ten and two fold provided lesser N50 contigs.
+
 ---
 
 <details>
@@ -324,24 +332,6 @@ perl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl /project/farm
 ```
  sbatch BuscoSingularity.sh /project/farman_s26abt480/ske300/PR0069/PR0069_final.fasta
 ```
-
----
-
-
-> **Optimal assembly:** SPAdes genome assembly analysis provided highest number of N50 contig. 
-
-<details>
-<summary>Why SPAdes was chosen</summary>
-
-Hiher N50 contigs are expected to havr higher genome assmebly sequencing coverage:
-
-- The highest N50 of 42969 bp
-- Total length closest to the expected genome size
-
-Velvet with ten and two fold provided lesser N50 contigs.
-
-</details>
-
 ---
 
 <details>
