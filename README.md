@@ -30,7 +30,6 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
 ---
 
 ## Assess Sequence Quality with FASTQC
-### Assess Sequence Quality - Before Trimming
 
 1. Run FastQC on the raw reads:
 
@@ -49,7 +48,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_1_fastqc.html 
 ```
 scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html .
 ```
-#### PR0069.1 FastQC Summary 
+4. PR0069.1 FastQC Summary 
 ![Summary](IMAGES/Basic_Statistics_PR0069.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.1.png)
 ![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
@@ -59,7 +58,6 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_PR0069.1.png)
 ![Adapter Content](IMAGES/Adapter_content_PR0069.1.png)
 
-#### FastQC Summary 
 
 | Module | Status |
 |---|---|
@@ -77,9 +75,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 > **Warnings:** Per tile sequence quality, Per sequence GC content and Sequence Length Distribution — adapters must be removed for further assembly analysis. 
 
-
-
-####  PR0069.2 FastQC Summary 
+5. PR0069.2 FastQC Summary 
 ![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.2.png)
 ![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
@@ -88,8 +84,6 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Length Distribution](IMAGES/Sequence_Length_Dsitribution_PR0069.2.png)
 ![Sequence Duplication Levels](IMAGES/Sequence_Duplication_Levels_PR0069.2.png)
 ![Adapter Content](IMAGES/Adaptor_content_PR0069.2.png)   
-
-#### FastQC Summary 
 
 | Module | Status |
 |---|---|
@@ -121,14 +115,13 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ```
  java -jar sequences/trimmomatic-0.38.jar PE -threads 2 -phred33 -trimlog Br80_errorlog.txt ske300/unix/sequence/PR006/PR0069_1.fq.gz ske300/unix/sequence/PR0069/PR0069_2.fq.gz PR0069_1_paired.fastq PR0069_1_unpaired.fastq PR0069_2_paired.fastq PR0069_2_unpaired.fastq ILLUMINACLIP:ske300/unix/sequence/PR0069/adaptors.fa:2:30:10 SLIDINGWINDOW:20:20 MINLEN:125
 ```
-### Assess Sequence Quality - After Trimming
-2. Re-run FastQC on trimmed paired and unpaired reads to confirm improvement:
+3. Re-run FastQC on trimmed paired and unpaired reads to confirm improvement:
 
 ```
  fastqc  PR0069_1_paired.fastq PR0069_2_paired.fastq  PR0069_1_unpaired.fastq  PR0069_2_unpaired.fastq
 ```
 
-#### PR0069_1_paired.fastq FastQC Summary 
+4. PR0069_1_paired.fastq FastQC Summary 
 ![Summary](IMAGES/Basic_Statistics_Paired_PR0069.1.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_Paired_PR0069.1.png)
 ![Per Tile Sequence Quality](IMAGES/Pertile_sequence_quality_paired_PR0069.1.png)
@@ -157,7 +150,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 
 
-#### PR0069_1_unpaired.fastq FastQC Summary
+5. PR0069_1_unpaired.fastq FastQC Summary
 ![Summary](IMAGES/Basic_Statistics_Unpaired_PR0069.1.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_quality_unpaired_PR0069.1.png)
 ![Per Tile Sequence Quality](IMAGES/per_tile_sequence_quality_unpaired_PR0069.1.png)
@@ -184,7 +177,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 > **After trimming:** Adapter content warning was resolved. All critical modules now pass.
 
 
-#### PR0069_2_paired.fastq FastQC Summary
+6. PR0069_2_paired.fastq FastQC Summary
 ![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
 ![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_PAIRED.png)
 ![Per Tile Sequence Quality](IMAGES/PER_TILE_SEQUENCE_QUALITY_PR0069_2_PAIRED.png)
@@ -211,10 +204,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 > **After trimming:** Adapter content warning was resolved. All critical modules now pass.
 
-
-
-
-#### FastQC Summary  of PR0069_2_unpaired.fastq read (After Trimming)
+7. FastQC Summary  of PR0069_2_unpaired.fastq read (After Trimming)
 ![Summary](IMAGES/BASICS STATSTICS_PR0069_2_UNPAIRED.png)
 ![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_UNPAIRED.png)
 ![Per Tile Sequence Quality](IMAGES/PER_TILE_SEQUENCE_QUALITY_PR0069_2_UNPAIRED.png)
@@ -224,8 +214,6 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Length Distribution](IMAGES/SEQUENCE_LENGTH_DISTRIBUTION_PR0069_2_UNPAIRED.png)
 ![Sequence Duplication Levels](IMAGES/SEQUENCE_DUPLICATION_LEVELS_PR0069_2_UNPAIRED.png)
 ![adapter_after.png](IMAGES/ADAPTER_CONTENT_PR0069_2_UNPAIRED.png)
-
-
 
 | Module | Status |
 |---|---|
@@ -246,6 +234,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ---
 
 ## Generate an Optimized PR0069 Assembly using Velvet and SPAdes
+
 ### Optimized MyGenome Assembly using Velvet 
 
 1. Transfer trimmed paired and unpaired reads to the MCC cluster:
@@ -291,7 +280,15 @@ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farma
 ```
 sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farman_s26abt480/ske300/PR0069  PR0069
 ```
+#### Assembly Metrics Summary
 
+| Metric | Velvet- step 10 (k=31) | Velvet- step 2 |SPAdes | SPAdes (paired)|
+|---|---|---|---|
+| # Genome size| 43031414 | 43045664 | 45561195 | 44641790 |
+|  contig (bp) | 18522 | 18629 | 23561 | 22803 |
+| N50 | 17569 | 17723 | 42969 | 39937 |
+
+---
 ## Perform Genome Post Processing for NCBI Submission
 1.changing scaffolds fasta heading:
 
@@ -312,14 +309,6 @@ perl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl /project/farm
 ```
 
 ---
-
-#### Assembly Metrics Summary
-
-| Metric | Velvet- step 10 (k=31) | Velvet- step 2 |SPAdes | SPAdes (paired)|
-|---|---|---|---|
-| # Genome size| 43031414 | 43045664 | 45561195 | 44641790 |
-|  contig (bp) | 18522 | 18629 | 23561 | 22803 |
-| N50 | 17569 | 17723 | 42969 | 39937 |
 
 
 > **Optimal assembly:** SPAdes genome assembly analysis provided highest number of N50 contig. 
