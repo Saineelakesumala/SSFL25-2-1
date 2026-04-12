@@ -109,7 +109,9 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 ---
 
- 
+ <details>
+<summary> Assess Sequence Quality  </summary>  
+  
 ## Trim Adaptors and Poor Quality Sequence with Trimmomatic
 1. Edit the list of the adaptor sequences file by adding 20 G to the file:
    
@@ -240,9 +242,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ---
 
 <details>
-<summary> Optimized PR0069 Assembly </summary>
- 
-## Generate an Optimized PR0069 Assembly using Velvet and SPAdes
+<summary>Generate an Optimized PR0069 Assembly using Velvet and SPAdes </summary>
 
 ### Optimized MyGenome Assembly using Velvet 
 
