@@ -280,7 +280,10 @@ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farma
 ```
 sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farman_s26abt480/ske300/PR0069  PR0069
 ```
-#### Assembly Metrics Summary
+<details>
+<summary>Assembly metrics summary</summary>
+
+Assembly metrics summary:
 
 | Metric | Velvet-step10 (k=31) | Velvet-step2 |SPAdes|
 |---|---|---|---|
