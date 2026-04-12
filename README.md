@@ -21,6 +21,8 @@ This repository consists bash piplines for genome sequencing cleanup, assembly, 
 ---
 <details>
 <summary> Download Datasets from the Farman Lab Mac </summary>  
+ 
+## Download Datasets from the Farman Lab Mac
 
 1. Connect to the remote server and copy raw sequencing reads to your working directory:
 
