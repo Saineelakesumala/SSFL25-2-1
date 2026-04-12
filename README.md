@@ -1,7 +1,7 @@
 # SSFL25-2-1
 Genome assembly of Pyricularia oryzae  stain SSFL25-2-1
 # MyGenome - SSFL25-2-1
-**Repository URL:** https://github.com/Sai Neela Kesumala/SSFL25-2-1
+**Repository URL:** https://github.com/Sai-Neela-Kesumala/SSFL25-2-1
 
 This repository consists bash piplines for genome sequencing cleanup, assembly, and annotation (from raw reads to an assembly, BLAST-queried genome).
 
