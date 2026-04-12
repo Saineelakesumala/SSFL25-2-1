@@ -58,6 +58,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_PR0069.1.png)
 ![Adapter Content](IMAGES/Adapter_content_PR0069.1.png)
 
+<summary> PR0069.1 FastQC Summary </summary> 
 
 | Module | Status |
 |---|---|
@@ -83,7 +84,9 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Per Base N Content](IMAGES/Per_base_N_content_PR0069.2.png)
 ![Sequence Length Distribution](IMAGES/Sequence_Length_Dsitribution_PR0069.2.png)
 ![Sequence Duplication Levels](IMAGES/Sequence_Duplication_Levels_PR0069.2.png)
-![Adapter Content](IMAGES/Adaptor_content_PR0069.2.png)   
+![Adapter Content](IMAGES/Adaptor_content_PR0069.2.png)
+
+<summary> PR0069.2 FastQC Summary </summary>  
 
 | Module | Status |
 |---|---|
@@ -131,6 +134,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Duplication Levels](IMAGES/Sequence_Duplication_levels_paired_PR0069.1.png)
 ![Adapter Content](IMAGES/Adapter_content_Paired_PR0069.png) 
 
+<summary> PR0069_1_paired.fastq FastQC Summary </summary>
 
 | Module | Status |
 |---|---|
@@ -158,7 +162,9 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Per Base N Content](IMAGES/Per_base_N_content_Unpaired_PR0069.png)
 ![Sequence Length Distribution](IMAGES/Sequence_length_distribution_unpaired_PR0069.png)
 ![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_unpaired_PR0069.png)
-![Adapter Content](IMAGES/ADAPTER_CONTENT_PR0069_2_UNPAIRED.png) 
+![Adapter Content](IMAGES/ADAPTER_CONTENT_PR0069_2_UNPAIRED.png)
+
+<summary> PR0069_1_unpaired.fastq FastQC Summary </summary>
 
 | Module | Status |
 |---|---|
@@ -188,6 +194,8 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Duplication Levels](IMAGES/SEQUENCEDUPLICATION_LEVELS_PR0069_2_PAIRED.png)
 ![adapter_after.png](IMAGES/ADAPTER_CONTENT_PR0069_2_PAIRED.png)
 
+<summary> PR0069_2_paired.fastq FastQC Summary </summary>
+
 | Module | Status |
 |---|---|
 |Basic Statistics| PASS |
@@ -214,6 +222,8 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Sequence Length Distribution](IMAGES/SEQUENCE_LENGTH_DISTRIBUTION_PR0069_2_UNPAIRED.png)
 ![Sequence Duplication Levels](IMAGES/SEQUENCE_DUPLICATION_LEVELS_PR0069_2_UNPAIRED.png)
 ![adapter_after.png](IMAGES/ADAPTER_CONTENT_PR0069_2_UNPAIRED.png)
+
+<summary> PR0069_2_unpaired.fastq FastQC Summary </summary>
 
 | Module | Status |
 |---|---|
@@ -282,9 +292,6 @@ sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farma
 ```
 <details>
 <summary>Assembly metrics summary</summary>
-
-Assembly metrics summary:
-
 | Metric | Velvet-step10 (k=31) | Velvet-step2 |SPAdes|
 |---|---|---|---|
 | Genome size| 43031414 | 43045664 | 45561195 | 44641790 |
