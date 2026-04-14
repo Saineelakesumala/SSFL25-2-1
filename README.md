@@ -53,15 +53,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_1_fastqc.html 
 ```
 scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html .
 ```
-4. PR0069.1 FastQC Summary 
-![Summary](IMAGES/Basic_Statistics_PR0069.png)
-![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.1.png)
-![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
-![Per Sequence Quality Scores](IMAGES/Per_sequence_quality_scores_PR0069.png)
-![Per Base N Content](IMAGES/Per_base_N_content_PR0069.1.png)
-![Sequence Length Distribution](IMAGES/Sequence_length_distribution_PR0069.1.png)
-![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_PR0069.1.png)
-![Adapter Content](IMAGES/Adapter_content_PR0069.1.png)
+#### FastQC Summary (Before Trimming)
 
 | Module | Status |
 |---|---|
@@ -78,6 +70,18 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 | Adapter Content | FAILED |
 
 > **Warnings:** Per tile sequence quality, Per sequence GC content and Sequence Length Distribution — adapters must be removed for further assembly analysis. 
+
+4. PR0069.1 FastQC Summary 
+![Summary](IMAGES/Basic_Statistics_PR0069.png)
+![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.1.png)
+![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
+![Per Sequence Quality Scores](IMAGES/Per_sequence_quality_scores_PR0069.png)
+![Per Base N Content](IMAGES/Per_base_N_content_PR0069.1.png)
+![Sequence Length Distribution](IMAGES/Sequence_length_distribution_PR0069.1.png)
+![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_PR0069.1.png)
+![Adapter Content](IMAGES/Adapter_content_PR0069.1.png)
+
+
 
 5. PR0069.2 FastQC Summary 
 ![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
