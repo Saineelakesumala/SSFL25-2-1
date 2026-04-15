@@ -411,7 +411,7 @@ awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.SSFL25-2-1.BLAST > 
 
 ### Output Files
 
-- [mito_contigs.csv](MyPR0069.csv) — CSV list of mitochondrial contigs for NCBI upload
+- [mito_contigs.csv](SsFL25-2-1.csv) — CSV list of mitochondrial contigs for NCBI upload
 
 ---
 ## MyGenome Gene Prediction
