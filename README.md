@@ -415,7 +415,7 @@ awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.PR0069.BLAST > MyPR
 
 ---
 ## MyGenome Gene Prediction
-
+### Train the data to HMM
 ```
  scp ske300@mcc.uky.edu:/project/farman_s26abt480/RESOURCES/B71Ref2.fasta snap/B71Ref2.fasta
 ```
