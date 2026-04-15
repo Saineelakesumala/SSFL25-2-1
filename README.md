@@ -414,4 +414,66 @@ awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.PR0069.BLAST > MyPR
 - [mito_contigs.csv](MyPR0069.csv) — CSV list of mitochondrial contigs for NCBI upload
 
 ---
+## MyGenome Gene Prediction
+
+```
+ scp ske300@mcc.uky.edu:/project/farman_s26abt480/RESOURCES/B71Ref2.fasta snap/B71Ref2.fasta
+```
+```
+ scp ske300@mcc.uky.edu:/project/farman_s26abt480/RESOURCES/B71Ref2_a0.3.gff3
+snap/B71Ref2_a0.3.gff3
+```
+```
+echo '##FASTA' | cat B71Ref2_a0.3.gff3 - B71Ref2.fasta > B71Ref2.gff3
+```
+```
+grep '##FASTA' -B 5 -A 5 B71Ref2.gff3
+```
+```
+maker2zff B71Ref2.gff3
+```
+```
+fathom genome.ann genome.dna -gene-stats
+```
+```
+fathom genome.ann genome.dna -categorize 1000
+```
+```
+fathom uni.ann uni.dna -gene-stats
+```
+```
+forge export.ann export.dna
+```
+```
+hmm-assembler.pl Moryzae . > Moryzae.hmm
+```
+### snap gene predictions
+
+```
+snap-hmm Moryzae.hmm  SsFL25-2-1_final00000000.fsa > SsFL25-2-1-snap.zff
+```
+```
+fathom SsFL25-2-1-snap.zff SsFL25-2-1_final00000000.fsa -gene-stats
+```
+```
+snap-hmm Moryzae.hmm  SsFL25-2-1_final00000000.fsa -gff > SsFL25-2-1-snap.gff2
+```
+
+### Augustus gene predictions
+```
+augustus --species=magnaporthe_grisea --gff3=on --singlestrand=true --progress=true SsFL25-2-1_final00000000.fsa > SsFL25-2-1-augustus.gff3
+```
+### Maker gene predictions
+```
+singularity exec /share/singularity/images/ccs/MAKER/amd-maker-debian10.sinf maker -CTL
+```
+```
+ sbatch maker.sh SsFL25-2-1_final00000000.fsa
+```
+```
+ gff3_merge -d SsFL25-2-1_final00000000.maker.output/SsFL25-2-1_final00000000_master_datastore_index.log -o SsFL25-2-1_maker.gff3
+```
+
+
+
 
