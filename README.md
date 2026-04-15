@@ -473,6 +473,10 @@ singularity exec /share/singularity/images/ccs/MAKER/amd-maker-debian10.sinf mak
 ```
  gff3_merge -d SsFL25-2-1_final00000000.maker.output/SsFL25-2-1_final00000000_master_datastore_index.log -o SsFL25-2-1_maker.gff3
 ```
+1. Total number of genes identifed are 13175
+```
+awk '$3== "gene"' SsFL25-2-1_maker.gff3 | wc -l
+```
 
 
 
