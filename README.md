@@ -53,7 +53,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_1_fastqc.html 
 ```
 scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html .
 ```
-#### FastQC Summary (Before Trimming)
+#### PR0069.1FastQC Summary (Before Trimming)
 
 | Module | Status |
 |---|---|
