@@ -125,15 +125,15 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 2. Run Trimmomatic to remove adapters and low-quality bases on both paired and unpaired raw reads:
 
 ```
- java -jar sequences/trimmomatic-0.38.jar PE -threads 2 -phred33 -trimlog Br80_errorlog.txt ske300/unix/sequence/PR006/PR0069_1.fq.gz ske300/unix/sequence/PR0069/PR0069_2.fq.gz PR0069_1_paired.fastq PR0069_1_unpaired.fastq PR0069_2_paired.fastq PR0069_2_unpaired.fastq ILLUMINACLIP:ske300/unix/sequence/PR0069/adaptors.fa:2:30:10 SLIDINGWINDOW:20:20 MINLEN:125
+ java -jar sequences/trimmomatic-0.38.jar PE -threads 2 -phred33 -trimlog Br80_errorlog.txt ske300/unix/sequence/SSFL25-2-1/SSFL25-2-1_1.fq.gz ske300/unix/sequence/SSFL25-2-1/SSFL25-2-1_2.fq.gz SSFL25-2-1_1_paired.fastq SSFL25-2-1_1_unpaired.fastq SSFL25-2-1_2_paired.fastq SSFL25-2-1_2_unpaired.fastq ILLUMINACLIP:ske300/unix/sequence/PR0069/adaptors.fa:2:30:10 SLIDINGWINDOW:20:20 MINLEN:125
 ```
 3. Re-run FastQC on trimmed paired and unpaired reads to confirm improvement:
 
 ```
- fastqc  PR0069_1_paired.fastq PR0069_2_paired.fastq  PR0069_1_unpaired.fastq  PR0069_2_unpaired.fastq
+ fastqc  SSFL25-2-1_1_paired.fastq SSFL25-2-1_2_paired.fastq  SSFL25-2-1_1_unpaired.fastq SSFL25-2-1_2_unpaired.fastq
 ```
 
-4. PR0069_1_paired.fastq FastQC Summary 
+4. SSFL25-2-1_1_paired.fastq FastQC Summary 
 ![Summary](IMAGES/Basic_Statistics_Paired_PR0069.1.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_Paired_PR0069.1.png)
 ![Per Tile Sequence Quality](IMAGES/Pertile_sequence_quality_paired_PR0069.1.png)
@@ -161,7 +161,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 
 
-5. PR0069_1_unpaired.fastq FastQC Summary
+5. SSFL25-2-1_1_unpaired.fastq FastQC Summary
 ![Summary](IMAGES/Basic_Statistics_Unpaired_PR0069.1.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_quality_unpaired_PR0069.1.png)
 ![Per Tile Sequence Quality](IMAGES/per_tile_sequence_quality_unpaired_PR0069.1.png)
@@ -188,7 +188,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 > **After trimming:** Adapter content warning was resolved. All critical modules now pass.
 
 
-6. PR0069_2_paired.fastq FastQC Summary
+6. SSFL25-2-1_2_paired.fastq FastQC Summary
 ![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
 ![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_PAIRED.png)
 ![Per Tile Sequence Quality](IMAGES/PER_TILE_SEQUENCE_QUALITY_PR0069_2_PAIRED.png)
@@ -215,7 +215,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 > **After trimming:** Adapter content warning was resolved. All critical modules now pass.
 
-7. FastQC Summary  of PR0069_2_unpaired.fastq read (After Trimming)
+7. FastQC Summary  of SSFL25-2-1_2_unpaired.fastq read (After Trimming)
 ![Summary](IMAGES/BASICS STATSTICS_PR0069_2_UNPAIRED.png)
 ![Per Base Sequence Quality](IMAGES/PER_BASE_SEQUENCE_CONTENT_PR0069_2_UNPAIRED.png)
 ![Per Tile Sequence Quality](IMAGES/PER_TILE_SEQUENCE_QUALITY_PR0069_2_UNPAIRED.png)
@@ -252,35 +252,35 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 1. Transfer trimmed paired and unpaired reads to the MCC cluster:
 
 ```
- scp PR0069_1_paired.fastq PR0069_2_paired.fastq  PR0069_1_unpaired.fastq PR0069_2_unpaired.fastq ske300@mcc.uky.edu:/project/farman_s26abt480/ske300/
+ scp SSFL25-2-1_1_paired.fastq SSFL25-2-1_2_paired.fastq  SSFL25-2-1_1_unpaired.fastq SSFL25-2-1_2_unpaired.fastq ske300@mcc.uky.edu:/project/farman_s26abt480/ske300/
 ```
 
 2. Run velvet for genome assembly using a range of K-mer values at 10fold with obtained reference from k-mer adviosory:
 
 ```
- sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 13 43 10
+ sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/velvetoptimiser.sh /project/farman_s26abt480/ske300/SSFL25-2-1 13 43 10
 ```
 
 ```
- sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 41 80 10
+ sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/velvetoptimiser.sh /project/farman_s26abt480/ske300/SSFL25-2-1 41 80 10
 ```
 
 ```
- sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 23 53 10
+ sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/velvetoptimiser.sh /project/farman_s26abt480/ske300/SSFL25-2-1 23 53 10
 ```
 
 ```
-sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 51 80 10
+sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/velvetoptimiser.sh /project/farman_s26abt480/ske300/SSFL25-2-1 51 80 10
 ```
 
 3. Re-run velvet using a range of K-mer values at 2 fold:
 
 ```
-sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 40 120 2
+sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/velvetoptimiser.sh /project/farman_s26abt480/ske300/SSFL25-2-1 40 120 2
 ```
 
 ```
-sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farman_s26abt480/ske300/PR0069 51 80 2
+sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/velvetoptimiser.sh /project/farman_s26abt480/ske300/SSFL25-2-1 51 80 2
 ```
 ---
 
@@ -293,7 +293,7 @@ sbatch /project/farman_s26abt480/ske300/PR0069/velvetoptimiser.sh /project/farma
 1. Submit SPAdes job to the cluster:
 
 ```
-sbatch /project/farman_s26abt480/ske300/PR0069/spades-paired.sh . /project/farman_s26abt480/ske300/PR0069  PR0069
+sbatch /project/farman_s26abt480/ske300/SSFL25-2-1/spades-paired.sh . /project/farman_s26abt480/ske300/SSFL25-2-1  SSFL25-2-1
 ```
  
 | Metric | Velvet-step10 (k=31) | Velvet-step2 |SPAdes|
@@ -319,19 +319,19 @@ Velvet with ten and two fold provided lesser N50 contigs.
 1.changing scaffolds fasta heading:
 
  ```
- cp farman_s26abt480/SCRIPTs/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl
+ cp farman_s26abt480/SCRIPTs/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/SSFL25-2-1/SimpleFastaHeaders.pl
 ```
 
 ```
-perl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/PR0069/PR0069_spades_pairedassembly/scaffolds.fasta  
+perl /project/farman_s26abt480/ske300/SSFL25-2-1/SimpleFastaHeaders.pl /project/farman_s26abt480/ske300/SSFL25-2-1/SSFL25-2-1_spades_pairedassembly/scaffolds.fasta  
 ```
 
 ```
- cp /project/farman_s26abt480/SLURM_SCRIPTs/GenomePostProcess.sh /project/farman_s26abt480/ske300/PR0069/GenomePostProcess.sh
+ cp /project/farman_s26abt480/SLURM_SCRIPTs/GenomePostProcess.sh /project/farman_s26abt480/ske300/SSFL25-2-1/GenomePostProcess.sh
 ``` 
 
 ```
- sbatch BuscoSingularity.sh /project/farman_s26abt480/ske300/PR0069/PR0069_final.fasta
+ sbatch BuscoSingularity.sh /project/farman_s26abt480/ske300/SSFL25-2-1/SSFL25-2-1_final.fasta
 ```
 ---
 
@@ -356,21 +356,21 @@ perl /project/farman_s26abt480/ske300/PR0069/SimpleFastaHeaders.pl /project/farm
 1. Transferring query mitochondrial reference sequence from another directory:
 
 ```
- cp /project/farman_s26abt480/RESOURCES/MoMitochondrion.fasta /project/farman_s26abt480/ske300/PR0069/MoMitochondrion.fasta
+ cp /project/farman_s26abt480/RESOURCES/MoMitochondrion.fasta /project/farman_s26abt480/ske300/SSFL25-2-1/MoMitochondrion.fasta
 ```
 
  
 2. Blast the genome assembly against Mitochondrial subject
 
 ```
- singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query MoMitochondrion.fasta -subject PR0069_final.fasta -evalue 1e-50 -max_target_seqs 2000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitocondrion.PR0069.BLAST
+ singularity run --app blast2120 /share/singularity/images/ccs/conda/amd-conda1-centos8.sinf blastn -query MoMitochondrion.fasta -subject SSFL25-2-1_final.fasta -evalue 1e-50 -max_target_seqs 2000 -outfmt '6 qseqid sseqid slen length qstart qend sstart send btop' -out MoMitocondrion.PR0069.BLAST
 ```
 
 
 3. Creating 90% BLAST hit sequence into a csv file :
 
 ```
-awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.PR0069.BLAST > MyPR0069.csv
+awk '$4/$3 >= 0.9 {print $2 ",mitocondrion"}' MoMitocondrion.SSFL25-2-1.BLAST > SSFL25-2-1.csv
 ```
 
 2. Mitochontrial hits with contigs copied into CSV:
