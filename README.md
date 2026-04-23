@@ -458,10 +458,18 @@ fathom SsFL25-2-1-snap.zff SsFL25-2-1_final00000000.fsa -gene-stats
 ```
 snap-hmm Moryzae.hmm  SsFL25-2-1_final00000000.fsa -gff > SsFL25-2-1-snap.gff2
 ```
+####  SNAP predicted genes - 12732
+```
+ awk '{print $NF}' SsFL25-2-1-snap.gff2  | sort | uniq | wc -l
+```
 
 ### Augustus gene predictions
 ```
 augustus --species=magnaporthe_grisea --gff3=on --singlestrand=true --progress=true SsFL25-2-1_final00000000.fsa > SsFL25-2-1-augustus.gff3
+```
+####  Augustus predicted genes - 17703
+```
+ awk '!/^#/ && $3 == "gene"' SsFL25-2-1-augustus.gff3 | wc -l
 ```
 ### Maker gene predictions
 ```
@@ -473,7 +481,7 @@ singularity exec /share/singularity/images/ccs/MAKER/amd-maker-debian10.sinf mak
 ```
  gff3_merge -d SsFL25-2-1_final00000000.maker.output/SsFL25-2-1_final00000000_master_datastore_index.log -o SsFL25-2-1_maker.gff3
 ```
-1. Total number of genes identifed are 13175
+####  Maker  predicted genes - 13175
 ```
 awk '$3== "gene"' SsFL25-2-1_maker.gff3 | wc -l
 ```
