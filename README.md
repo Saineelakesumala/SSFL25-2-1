@@ -462,8 +462,6 @@ snap-hmm Moryzae.hmm  SsFL25-2-1_final00000000.fsa -gff > SsFL25-2-1-snap.gff2
 ```
  awk '{print $NF}' SsFL25-2-1-snap.gff2  | sort | uniq | wc -l
 ```
-**IGV SNAP predicted genes visualization:**
-![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
 
 ### Augustus gene predictions
 ```
@@ -473,6 +471,10 @@ augustus --species=magnaporthe_grisea --gff3=on --singlestrand=true --progress=t
 ```
  awk '!/^#/ && $3 == "gene"' SsFL25-2-1-augustus.gff3 | wc -l
 ```
+**IGV SNAP predicted genes visualization:**
+
+![Augustus](GENEIMAGE/SNAP.png)
+
 ### Maker gene predictions
 ```
 singularity exec /share/singularity/images/ccs/MAKER/amd-maker-debian10.sinf maker -CTL
