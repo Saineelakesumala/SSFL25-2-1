@@ -462,6 +462,8 @@ snap-hmm Moryzae.hmm  SsFL25-2-1_final00000000.fsa -gff > SsFL25-2-1-snap.gff2
 ```
  awk '{print $NF}' SsFL25-2-1-snap.gff2  | sort | uniq | wc -l
 ```
+**IGV SNAP predicted genes visualization:**
+![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
 
 ### Augustus gene predictions
 ```
