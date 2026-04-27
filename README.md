@@ -71,19 +71,23 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 > **Warnings:** Per tile sequence quality, Per sequence GC content and Sequence Length Distribution — adapters must be removed for further assembly analysis. 
 
-4. PR0069.1 FastQC Summary 
-![Summary](IMAGES/Basic_Statistics_PR0069.png)
-![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.1.png)
-![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
-![Per Sequence Quality Scores](IMAGES/Per_sequence_quality_scores_PR0069.png)
-![Per Base N Content](IMAGES/Per_base_N_content_PR0069.1.png)
-![Sequence Length Distribution](IMAGES/Sequence_length_distribution_PR0069.1.png)
-![Sequence Duplication Levels](IMAGES/Sequence_duplication_levels_PR0069.1.png)
-![Adapter Content](IMAGES/Adapter_content_PR0069.1.png)
+4.SsFL25-2-1_1 FastQC Summary 
+![Summary](FASTQ/BASIC_STATISTICS_SsFL25_2_1_1.png)
+![Per Base Sequence Quality](FASTQ/PER_BASE_SEQUENCE-QUALITY.png)
+![Per Tile Sequence Quality](FASTQ/PER_TILE_SEQUENCE_QUALITY_SsFL25-2-1-1.png)
+![Per sequence quality scores](FASTQ/PER_SEQUENCE-QUALITY_SCORES.png)
+![Per base sequence content](FASTQ/PER_BASE_SEQUENCE-CONTENT-SsFL25_2_1-1.png)
+![Per sequence GC content](FASTQ/PER_SEQUENCE_GC_CONTENT-SsFL25_2_1-1.png)
+![Per base N content](FASTQ/PER_BASE_N-CONTENT-SsFL25_2_1-1.png)
+![Sequence Length Distribution](FASTQ/SEQUENCE_LENGTH_DISTRIBUTION-SsFL25_2_1-1.png)
+![Sequence Duplication Levels](FASTQ/SEQUENCE_DUPLICATION_LEVELS_SsFL25_2_1-1.png)
+![Overrepresented sequences](FASTQ/OVERREPRESENTED_SEQUENCE_SsFL25_2_1.png)
+![Adapter Content](FASTQ/ADAPTOR_CONTENT_SsFL25_2_1_1.png)
 
 
 
-5. PR0069.2 FastQC Summary 
+
+6. PR0069.2 FastQC Summary 
 ![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
 ![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.2.png)
 ![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
@@ -91,7 +95,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 ![Per Base N Content](IMAGES/Per_base_N_content_PR0069.2.png)
 ![Sequence Length Distribution](IMAGES/Sequence_Length_Dsitribution_PR0069.2.png)
 ![Sequence Duplication Levels](IMAGES/Sequence_Duplication_Levels_PR0069.2.png)
-![Adapter Content](IMAGES/Adaptor_content_PR0069.2.png)
+![Adapter Content](FASTQ/ADAPTOR_CONTENT_SsFL25_2_1_1.png)
 
 
 | Module | Status |
