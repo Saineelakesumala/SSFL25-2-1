@@ -87,30 +87,35 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 
 
-6. PR0069.2 FastQC Summary 
-![Summary](IMAGES/Basic_Statistics_PR0069.2.png)
-![Per Base Sequence Quality](IMAGES/Per_base_sequence_content_PR0069.2.png)
-![Per Tile Sequence Quality](IMAGES/Per_tile_sequence_quality_PR0069.png)
-![Per Sequence Quality Scores](IMAGES/Per_sequecne_quality_scores_PR0069.2.png)
-![Per Base N Content](IMAGES/Per_base_N_content_PR0069.2.png)
-![Sequence Length Distribution](IMAGES/Sequence_Length_Dsitribution_PR0069.2.png)
-![Sequence Duplication Levels](IMAGES/Sequence_Duplication_Levels_PR0069.2.png)
-![Adapter Content](FASTQ/ADAPTOR_CONTENT_SsFL25_2_1_1.png)
+6. PR0069.2 FastQC Summary
 
-
-| Module | Status |
+   | Module | Status |
 |---|---|
 | Basic Statistics | GOOD |
 | Per base sequence quality | GOOD |
-| Per tile sequence quality | WARN |
+| Per tile sequence quality | WARNING |
 | Per sequence quality scores | GOOD |
-| Per base sequence content | GOOD |
+| Per base sequence content | WARNING |
 | Per sequence GC content | WARNING |
 | Per base N content | GOOD |
-| Sequence Length Distribution | WARNING |
+| Sequence Length Distribution | GOOD |
 | Sequence Duplication Levels | GOOD |
-| Overrepresented sequences | GOOD |
+| Overrepresented sequences | WARNING |
 | Adapter Content | FAILED |
+
+![Summary](FASTQ2/BASIC_STATISTICS_SsFL25_2_1_2.png)
+![Per Base Sequence Quality](FASTQ2/PER_BAE_SEQUENCE_QUALITY_SsFL25_2_1_2.png)
+![Per Tile Sequence Quality](FASTQ2/PER_TILE_SEQUENCE_QUALITY_SsFL25_2_1_2.png)
+![Per sequence quality scores](FASTQ2/PER_SEQUENCE_QUALITY_SCORES_SsFL25_2_1_2.png)
+![Per base sequence content](FASTQ2/PER_BASE_SEQUENCE_CONTENT_SsFL25_2_1_2.png)
+![Per sequence GC content](FASTQ2/PER_SEQUENCE_GC_CONTENT_SsFL25_2_1_2.png)
+![Per base N content](FASTQ2/PER_BASE_N_CONTENT_SsFL25_2_1_2.png)
+![Sequence Length Distribution](FASTQ2/SEQUENCE_LENGTH_DISTRIBUTION_SsFL25_2_1_2.png)
+![Sequence Duplication Levels](FASTQ2/SEQUENCE_DUPLICATION_LEVELS_SsFL25_2_1_2.png)
+![Overrepresented sequences](FASTQ2/OVERREPRESENTED_SEQUENCE_SsFL25_2_1_2.png)
+![Adapter Content](FASTQ2/ADAPTER_CONTENT_SsFL25_2_1_2.png)
+
+
 
 > **Warnings:** Per tile sequence quality, Per sequence GC content and Sequence Length Distribution — adapters must be removed for further assembly analysis. 
 
