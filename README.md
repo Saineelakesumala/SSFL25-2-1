@@ -61,12 +61,12 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 | Per base sequence quality | GOOD |
 | Per tile sequence quality | WARN |
 | Per sequence quality scores | GOOD |
-| Per base sequence content | GOOD |
+| Per base sequence content | WARNING |
 | Per sequence GC content | WARNING |
 | Per base N content | GOOD |
-| Sequence Length Distribution | WARNING |
+| Sequence Length Distribution | GOOD |
 | Sequence Duplication Levels | GOOD |
-| Overrepresented sequences | GOOD |
+| Overrepresented sequences | WARNING |
 | Adapter Content | FAILED |
 
 > **Warnings:** Per tile sequence quality, Per sequence GC content and Sequence Length Distribution — adapters must be removed for further assembly analysis. 
