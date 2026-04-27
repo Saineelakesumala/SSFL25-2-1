@@ -89,7 +89,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 
 6. PR0069.2 FastQC Summary
 
-   | Module | Status |
+| Module | Status |
 |---|---|
 | Basic Statistics | GOOD |
 | Per base sequence quality | GOOD |
@@ -102,6 +102,7 @@ scp -r ske300@ske300.cs.uky.edu:~/sequences/SSFL25-2-1/SSFL25-2-1_2_fastqc.html 
 | Sequence Duplication Levels | GOOD |
 | Overrepresented sequences | WARNING |
 | Adapter Content | FAILED |
+
 
 ![Summary](FASTQ2/BASIC_STATISTICS_SsFL25_2_1_2.png)
 ![Per Base Sequence Quality](FASTQ2/PER_BAE_SEQUENCE_QUALITY_SsFL25_2_1_2.png)
